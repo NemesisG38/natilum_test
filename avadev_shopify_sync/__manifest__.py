@@ -6,7 +6,7 @@
     "author": "AVADEV",
     "website": "https://www.avadev.mx",
     "category": "Sales",
-    "license": "LGPL-3",
+    "license": "Other proprietary",
     "depends": ["base", "mail"],
     "external_dependencies": {
         "python": ["requests"],
