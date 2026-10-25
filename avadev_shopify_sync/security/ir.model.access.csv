@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_shopify_account_user,shopify.account.user,model_shopify_account,base.group_user,1,1,1,1
+access_shopify_order_mirror_user,shopify.order.mirror.user,model_shopify_order_mirror,base.group_user,1,1,1,1
+access_shopify_order_line_mirror_user,shopify.order.line.mirror.user,model_shopify_order_line_mirror,base.group_user,1,1,1,1
+access_shopify_webhook_event_user,shopify.webhook.event.user,model_shopify_webhook_event,base.group_user,1,1,1,0

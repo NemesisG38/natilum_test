@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_avadev_shopify_root"
+              name="Shopify Sync"
+              sequence="90"/>
+
+    <menuitem id="menu_shopify_account"
+              name="Accounts"
+              parent="menu_avadev_shopify_root"
+              action="action_shopify_account"
+              sequence="10"/>
+
+    <menuitem id="menu_shopify_order_mirror"
+              name="Orders (mirror)"
+              parent="menu_avadev_shopify_root"
+              action="action_shopify_order_mirror"
+              sequence="20"/>
+
+    <menuitem id="menu_shopify_webhook_event"
+              name="Webhook events"
+              parent="menu_avadev_shopify_root"
+              action="action_shopify_webhook_event"
+              sequence="30"/>
+</odoo>

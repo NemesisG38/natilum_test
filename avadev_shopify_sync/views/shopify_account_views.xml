@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shopify_account_list" model="ir.ui.view">
+        <field name="name">shopify.account.list</field>
+        <field name="model">shopify.account</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="shop_domain"/>
+                <field name="oauth_connected"/>
+                <field name="webhook_registered"/>
+                <field name="last_order_sync_at"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_shopify_account_form" model="ir.ui.view">
+        <field name="name">shopify.account.form</field>
+        <field name="model">shopify.account</field>
+        <field name="arch" type="xml">
+            <form string="Shopify Account">
+                <header>
+                    <button name="action_open_oauth_connect" type="object"
+                            string="Connect with Shopify" class="btn-primary"/>
+                    <button name="action_test_connection" type="object"
+                            string="Test connection"
+                            invisible="not access_token"/>
+                    <button name="action_register_webhooks" type="object"
+                            string="Register webhooks"
+                            invisible="not access_token"/>
+                    <button name="action_sync_orders_now" type="object"
+                            string="Sync orders now"
+                            invisible="not access_token"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Connected" bg_color="text-bg-success"
+                            invisible="not oauth_connected"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="shop_domain"/>
+                            <field name="active"/>
+                            <field name="api_version"/>
+                            <field name="scopes"/>
+                        </group>
+                        <group>
+                            <field name="oauth_connected"/>
+                            <field name="webhook_registered"/>
+                            <field name="last_order_sync_at"/>
+                            <field name="webhook_callback_url"/>
+                        </group>
+                    </group>
+                    <group string="Credentials">
+                        <field name="client_id"/>
+                        <field name="client_secret" password="True"/>
+                        <field name="access_token" password="True"/>
+                        <field name="webhook_public_base_url"
+                                placeholder="https://xxxx.ngrok-free.dev"/>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        App URL (Partners): Public Base URL + /avadev_shopify/install
+                        <br/>
+                        Redirect URI: Public Base URL + /avadev_shopify/oauth/callback
+                        <br/>
+                        Webhook: Public Base URL + /avadev_shopify/webhook
+                    </div>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shopify_account" model="ir.actions.act_window">
+        <field name="name">Shopify Accounts</field>
+        <field name="res_model">shopify.account</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
